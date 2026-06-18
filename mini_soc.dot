@@ -1,0 +1,32 @@
+digraph "mini_soc" {
+label="mini_soc";
+rankdir="LR";
+remincross=true;
+n1 [ shape=diamond, label="alu_out", color="black", fontcolor="black"];
+n2 [ shape=octagon, label="alu_sel", color="black", fontcolor="black"];
+n3 [ shape=octagon, label="clk", color="black", fontcolor="black"];
+n4 [ shape=diamond, label="count", color="black", fontcolor="black"];
+n5 [ shape=octagon, label="mux_sel", color="black", fontcolor="black"];
+n6 [ shape=octagon, label="rst", color="black", fontcolor="black"];
+n7 [ shape=octagon, label="soc_out", color="black", fontcolor="black"];
+c12 [ shape=record, label="{{<p8> a|<p9> b|<p10> sel}|u_alu\nalu|{<p11> result}}",  ];
+x0 [ shape=record, style=rounded, label="<s0> 3:2 - 1:0 ", color="black", fontcolor="black" ];
+x0:e -> c12:p8:w [arrowhead=odiamond, arrowtail=odiamond, dir=both, color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+x1 [ shape=record, style=rounded, label="<s0> 1:0 - 1:0 ", color="black", fontcolor="black" ];
+x1:e -> c12:p9:w [arrowhead=odiamond, arrowtail=odiamond, dir=both, color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c13 [ shape=record, label="{{<p3> clk|<p6> rst}|u_counter\ncounter|{<p4> count}}",  ];
+c17 [ shape=record, label="{{<p14> in0|<p15> in1|<p10> sel}|u_mux\nmux|{<p16> out}}",  ];
+x2 [ shape=record, style=rounded, label="<s0> 3:2 - 1:0 ", color="black", fontcolor="black" ];
+x2:e -> c17:p14:w [arrowhead=odiamond, arrowtail=odiamond, dir=both, color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c12:p11:e -> n1:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n1:e -> c17:p15:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n2:e -> c12:p10:w [color="black", fontcolor="black", label=""];
+n3:e -> c13:p3:w [color="black", fontcolor="black", label=""];
+c13:p4:e -> n4:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n4:e -> x0:s0:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n4:e -> x1:s0:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n4:e -> x2:s0:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n5:e -> c17:p10:w [color="black", fontcolor="black", label=""];
+n6:e -> c13:p6:w [color="black", fontcolor="black", label=""];
+c17:p16:e -> n7:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+}
