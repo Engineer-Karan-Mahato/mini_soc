@@ -1,4 +1,4 @@
-module mux2x1 ( 
+module mux ( 
 // 2-bit 2:1 multiplexer  
 		input  wire [1:0] in0,    
 		input  wire [1:0] in1,    
